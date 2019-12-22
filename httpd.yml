@@ -1,0 +1,16 @@
+---
+- name: This playbook will be used for HTTP Installation.
+  hosts: test
+  tasks:
+   - name: install httpd
+     package:
+      name: httpd
+      state: latest
+   - name: copy
+     copy:
+      src: /root/index.html
+      dest: /var/www/html
+   - name:  start service
+     service:
+      name: httpd
+      state: started
